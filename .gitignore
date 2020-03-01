@@ -6,5 +6,5 @@ build
 
 .gradletasknamecache
 
-parkinglot.*
+/parkinglot.*
 .idea
