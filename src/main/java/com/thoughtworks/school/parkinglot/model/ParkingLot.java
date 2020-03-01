@@ -22,7 +22,7 @@ public class ParkingLot {
   }
 
   public Receipt park(Car car) {
-    if (capacity <= validReceipts.size()) {
+    if (!this.isAvailable()) {
       throw new ParkingLotNotAvailableException();
     }
     Receipt receipt = new Receipt(this.id, UUID.randomUUID().toString(), car);
