@@ -71,4 +71,15 @@ class ParkingLotTest extends Specification {
     then:
     thrown(InvalidReceiptException.class)
   }
+
+  def "should return true when check if parking lot is available given there are some parking space"() {
+    given:
+    def parkingLot = new ParkingLot(1)
+
+    when:
+    Boolean isAvailable = parkingLot.isAvailable();
+
+    then:
+    isAvailable
+  }
 }

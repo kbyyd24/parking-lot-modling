@@ -43,4 +43,8 @@ public class ParkingLot {
             .collect(toSet());
     return car;
   }
+
+  public Boolean isAvailable() {
+    return true;
+  }
 }
