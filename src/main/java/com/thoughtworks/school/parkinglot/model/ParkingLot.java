@@ -29,4 +29,8 @@ public class ParkingLot {
         Stream.concat(validReceipts.stream(), Stream.of(receipt)).collect(Collectors.toSet());
     return receipt;
   }
+
+  public Car pickUp(Receipt receipt) {
+    return validReceipts.stream().filter(receipt::equals).findFirst().map(Receipt::getCar).get();
+  }
 }

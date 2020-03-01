@@ -29,4 +29,17 @@ class ParkingLotTest extends Specification {
     then:
     thrown(ParkingLotNotAvailableException.class)
   }
+
+  def 'should pick up car success when receipt is valid'() {
+    given:
+    def parkingLot = new ParkingLot(2)
+    def car = new Car()
+    def receipt = parkingLot.park(car)
+
+    when:
+    Car pickedUpCar = parkingLot.pickUp(receipt)
+
+    then:
+    car == pickedUpCar
+  }
 }
