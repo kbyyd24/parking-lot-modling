@@ -77,9 +77,20 @@ class ParkingLotTest extends Specification {
     def parkingLot = new ParkingLot(1)
 
     when:
-    Boolean isAvailable = parkingLot.isAvailable();
+    def available = parkingLot.isAvailable()
 
     then:
-    isAvailable
+    available
+  }
+
+  def "should return false when check if parking lot is available given there are not parking space"() {
+    given:
+    def parkingLot = new ParkingLot(0)
+
+    when:
+    def available = parkingLot.isAvailable()
+
+    then:
+    !available
   }
 }

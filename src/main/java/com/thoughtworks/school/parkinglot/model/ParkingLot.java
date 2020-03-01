@@ -45,6 +45,6 @@ public class ParkingLot {
   }
 
   public Boolean isAvailable() {
-    return true;
+    return capacity > validReceipts.size();
   }
 }
