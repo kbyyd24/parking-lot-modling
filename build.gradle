@@ -1,6 +1,7 @@
 plugins {
   id 'idea'
   id 'java'
+  id 'groovy-base'
 }
 
 repositories {
@@ -13,4 +14,7 @@ dependencies {
 
   testCompileOnly 'org.projectlombok:lombok:1.18.12'
   testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+  testImplementation 'org.codehaus.groovy:groovy-all:2.5.7'
+  testImplementation 'org.spockframework:spock-core:1.3-groovy-2.5'
 }
