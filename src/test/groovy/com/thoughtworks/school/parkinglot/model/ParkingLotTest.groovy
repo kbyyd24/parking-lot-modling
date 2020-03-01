@@ -57,4 +57,18 @@ class ParkingLotTest extends Specification {
     then:
     thrown(InvalidReceiptException.class)
   }
+
+  def "should throw exception when pick up car by a receipt already used"() {
+    given:
+    def parkingLot = new ParkingLot(2)
+    def car = new Car()
+    def receipt = parkingLot.park(car)
+    parkingLot.pickUp(receipt)
+
+    when:
+    parkingLot.pickUp(receipt)
+
+    then:
+    thrown(InvalidReceiptException.class)
+  }
 }
