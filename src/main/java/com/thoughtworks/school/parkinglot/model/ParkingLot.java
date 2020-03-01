@@ -3,8 +3,11 @@ package com.thoughtworks.school.parkinglot.model;
 import static java.util.Collections.emptySet;
 
 import com.thoughtworks.school.parkinglot.annotation.Entity;
+import com.thoughtworks.school.parkinglot.exception.ParkingLotNotAvailableException;
 import java.util.Collection;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Entity
 public class ParkingLot {
@@ -18,6 +21,12 @@ public class ParkingLot {
   }
 
   public Receipt park(Car car) {
-    return new Receipt(this.id, null, car);
+    if (capacity <= validReceipts.size()) {
+      throw new ParkingLotNotAvailableException();
+    }
+    Receipt receipt = new Receipt(this.id, null, car);
+    validReceipts =
+        Stream.concat(validReceipts.stream(), Stream.of(receipt)).collect(Collectors.toSet());
+    return receipt;
   }
 }
