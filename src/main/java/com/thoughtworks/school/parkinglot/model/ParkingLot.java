@@ -3,6 +3,7 @@ package com.thoughtworks.school.parkinglot.model;
 import static java.util.Collections.emptySet;
 
 import com.thoughtworks.school.parkinglot.annotation.Entity;
+import com.thoughtworks.school.parkinglot.exception.InvalidReceiptException;
 import com.thoughtworks.school.parkinglot.exception.ParkingLotNotAvailableException;
 import java.util.Collection;
 import java.util.UUID;
@@ -24,13 +25,17 @@ public class ParkingLot {
     if (capacity <= validReceipts.size()) {
       throw new ParkingLotNotAvailableException();
     }
-    Receipt receipt = new Receipt(this.id, null, car);
+    Receipt receipt = new Receipt(this.id, UUID.randomUUID().toString(), car);
     validReceipts =
         Stream.concat(validReceipts.stream(), Stream.of(receipt)).collect(Collectors.toSet());
     return receipt;
   }
 
   public Car pickUp(Receipt receipt) {
-    return validReceipts.stream().filter(receipt::equals).findFirst().map(Receipt::getCar).get();
+    return validReceipts.stream()
+        .filter(receipt::equals)
+        .findFirst()
+        .map(Receipt::getCar)
+        .orElseThrow(InvalidReceiptException::new);
   }
 }

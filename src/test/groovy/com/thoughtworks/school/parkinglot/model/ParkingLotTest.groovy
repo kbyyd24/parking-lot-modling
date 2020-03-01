@@ -1,5 +1,6 @@
 package com.thoughtworks.school.parkinglot.model
 
+import com.thoughtworks.school.parkinglot.exception.InvalidReceiptException
 import com.thoughtworks.school.parkinglot.exception.ParkingLotNotAvailableException
 import spock.lang.Specification
 
@@ -41,5 +42,19 @@ class ParkingLotTest extends Specification {
 
     then:
     car == pickedUpCar
+  }
+
+  def "should throw exception when pick up car by an invalid receipt"() {
+    given:
+    def parkingLot = new ParkingLot(2)
+    def car = new Car()
+    parkingLot.park(car)
+    def invalidReceipt = new Receipt(parkingLot.id, null, car)
+
+    when:
+    parkingLot.pickUp(invalidReceipt)
+
+    then:
+    thrown(InvalidReceiptException.class)
   }
 }
