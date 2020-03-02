@@ -2,6 +2,7 @@ package com.thoughtworks.school.parkinglot.model
 
 import com.thoughtworks.school.parkinglot.exception.InvalidReceiptException
 import com.thoughtworks.school.parkinglot.exception.NoAvailableParkingLotException
+import com.thoughtworks.school.parkinglot.exception.ParkingLotNotFoundException
 import spock.lang.Specification
 
 class ParkingBoyTest extends Specification {
@@ -127,5 +128,17 @@ class ParkingBoyTest extends Specification {
 
     then:
     thrown(InvalidReceiptException.class)
+  }
+
+  def "should throw exception when pick car by a receipt not belong to any parking lot managed by parking boy"() {
+    given:
+    parkingBoy.addNextParkingLot(new ParkingLot(1))
+    def receipt = new Receipt(UUID.randomUUID().toString(), "any", new Car())
+
+    when:
+    parkingBoy.pickUp(receipt)
+
+    then:
+    thrown(ParkingLotNotFoundException.class)
   }
 }

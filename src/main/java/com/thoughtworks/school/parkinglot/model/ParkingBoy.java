@@ -2,6 +2,7 @@ package com.thoughtworks.school.parkinglot.model;
 
 import com.thoughtworks.school.parkinglot.annotation.Entity;
 import com.thoughtworks.school.parkinglot.exception.NoAvailableParkingLotException;
+import com.thoughtworks.school.parkinglot.exception.ParkingLotNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,11 @@ public class ParkingBoy {
   }
 
   public Car pickUp(Receipt receipt) {
-    return parkingLots.get(0).pickUp(receipt);
+    ParkingLot relatedParkingLot =
+        parkingLots.stream()
+            .filter(parkingLot -> parkingLot.getId().equals(receipt.getParkingLotId()))
+            .findFirst()
+            .orElseThrow(ParkingLotNotFoundException::new);
+    return relatedParkingLot.pickUp(receipt);
   }
 }

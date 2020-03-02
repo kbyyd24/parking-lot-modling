@@ -10,11 +10,12 @@ import java.util.Collection;
 import java.util.UUID;
 import java.util.stream.Stream;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 @Entity
 @EqualsAndHashCode(of = {"id"})
 public class ParkingLot {
-  private String id;
+  @Getter private String id;
   private int capacity;
   private Collection<Receipt> validReceipts = emptySet();
 
