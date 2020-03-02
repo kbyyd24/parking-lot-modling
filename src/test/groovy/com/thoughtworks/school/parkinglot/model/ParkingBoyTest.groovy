@@ -1,5 +1,6 @@
 package com.thoughtworks.school.parkinglot.model
 
+import com.thoughtworks.school.parkinglot.exception.NoAvailableParkingLotException
 import spock.lang.Specification
 
 class ParkingBoyTest extends Specification {
@@ -63,5 +64,19 @@ class ParkingBoyTest extends Specification {
 
     then:
     receipt.parkingLotId == firstAvailableParkingLot.id
+  }
+
+  def "should throw exception if parking boy has no available parking lot"() {
+    given:
+    def parkingBoy = new ParkingBoy()
+    def parkingLot = new ParkingLot(1)
+    parkingLot.park(new Car())
+    parkingBoy.addNextParkingLot(parkingLot)
+
+    when:
+    parkingBoy.park(new Car())
+
+    then:
+    thrown(NoAvailableParkingLotException.class)
   }
 }
