@@ -16,4 +16,8 @@ public class ParkingBoy {
   public void removeParkingLot(ParkingLot parkingLot) {
     parkingLots.removeIf(parkingLot::equals);
   }
+
+  public Receipt park(Car car) {
+    return parkingLots.get(0).park(car);
+  }
 }

@@ -29,4 +29,20 @@ class ParkingBoyTest extends Specification {
     then:
     !parkingBoy.parkingLots.contains(parkingLot)
   }
+
+  def "should park car success when parking boy has available parking lot"() {
+    given:
+    def parkingBoy = new ParkingBoy()
+    def parkingLot = new ParkingLot(1)
+    parkingBoy.addNextParkingLot(parkingLot)
+    def car = new Car()
+
+    when:
+    Receipt receipt = parkingBoy.park(car)
+
+    then:
+    receipt.parkingLotId == parkingLot.id
+    receipt.token != null
+    receipt.car == car
+  }
 }
