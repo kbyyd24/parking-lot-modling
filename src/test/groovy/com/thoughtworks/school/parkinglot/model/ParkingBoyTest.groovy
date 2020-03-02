@@ -16,4 +16,17 @@ class ParkingBoyTest extends Specification {
     then:
     parkingBoy.parkingLots[1].id == parkingLot.id
   }
+
+  def "should remove parking lot success"() {
+    given:
+    def parkingBoy = new ParkingBoy()
+    parkingBoy.addNextParkingLot(new ParkingLot(1))
+    def parkingLot = new ParkingLot(1)
+
+    when:
+    parkingBoy.removeParkingLot(parkingLot)
+
+    then:
+    !parkingBoy.parkingLots.contains(parkingLot)
+  }
 }

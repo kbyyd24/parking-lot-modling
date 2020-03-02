@@ -9,8 +9,10 @@ import com.thoughtworks.school.parkinglot.exception.ParkingLotNotAvailableExcept
 import java.util.Collection;
 import java.util.UUID;
 import java.util.stream.Stream;
+import lombok.EqualsAndHashCode;
 
 @Entity
+@EqualsAndHashCode(of = {"id"})
 public class ParkingLot {
   private String id;
   private int capacity;
