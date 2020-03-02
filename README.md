@@ -1,12 +1,12 @@
-= Parking Lot
+ Parking Lot
+---
 
-image::https://github.com/kbyyd24/parking-lot-modling/workflows/parking-lot/badge.svg[link="https://github.com/kbyyd24/parking-lot-modling/actions"]
+![parking-lot](https://github.com/kbyyd24/parking-lot-modling/workflows/parking-lot/badge.svg)
 
 
-== UML
+## UML
 
-[plantuml]
-----
+```plantuml
 @startuml
 
 class ParkingBoy <<Entity>> {
@@ -44,13 +44,12 @@ ParkingBoy ..> Car
 ParkingLot ..> Car
 
 @enduml
-----
+```
 
-== How to run
+## How to run
 
 Use cases are written as test cases, run gradle test can see the result:
 
-[shell]
-----
+```shell script
 > gradle test
-----
+```
