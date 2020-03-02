@@ -5,9 +5,18 @@ import spock.lang.Specification
 
 class ParkingBoyTest extends Specification {
 
+  ParkingBoy parkingBoy
+
+  void setup() {
+    parkingBoy = new ParkingBoy()
+  }
+
+  void cleanup() {
+    parkingBoy == null
+  }
+
   def "should add parking lot at last success"() {
     given:
-    def parkingBoy = new ParkingBoy()
     parkingBoy.addNextParkingLot(new ParkingLot(1))
     def parkingLot = new ParkingLot(1)
 
@@ -20,7 +29,6 @@ class ParkingBoyTest extends Specification {
 
   def "should remove parking lot success"() {
     given:
-    def parkingBoy = new ParkingBoy()
     parkingBoy.addNextParkingLot(new ParkingLot(1))
     def parkingLot = new ParkingLot(1)
 
@@ -33,7 +41,6 @@ class ParkingBoyTest extends Specification {
 
   def "should park car success when parking boy has available parking lot"() {
     given:
-    def parkingBoy = new ParkingBoy()
     def parkingLot = new ParkingLot(1)
     parkingBoy.addNextParkingLot(parkingLot)
     def car = new Car()
@@ -49,7 +56,6 @@ class ParkingBoyTest extends Specification {
 
   def "should park car at first available parking lot"() {
     given:
-    def parkingBoy = new ParkingBoy()
     def notAvailableParkingLot = new ParkingLot(1)
     notAvailableParkingLot.park(new Car())
     def firstAvailableParkingLot = new ParkingLot(2)
@@ -68,7 +74,6 @@ class ParkingBoyTest extends Specification {
 
   def "should throw exception if parking boy has no available parking lot"() {
     given:
-    def parkingBoy = new ParkingBoy()
     def parkingLot = new ParkingLot(1)
     parkingLot.park(new Car())
     parkingBoy.addNextParkingLot(parkingLot)
@@ -78,5 +83,20 @@ class ParkingBoyTest extends Specification {
 
     then:
     thrown(NoAvailableParkingLotException.class)
+  }
+
+  def "should pick up car success"() {
+    given:
+    def parkingLot = new ParkingLot(1)
+    parkingBoy.addNextParkingLot(parkingLot)
+    def car = new Car()
+    def receipt = parkingBoy.park(car)
+
+    when:
+    Car pickedUpCar = parkingBoy.pickUp(receipt)
+
+    then:
+    pickedUpCar == car
+    parkingLot.validReceipts.size() == 0
   }
 }

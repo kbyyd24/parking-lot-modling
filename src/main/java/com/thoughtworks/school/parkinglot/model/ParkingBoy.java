@@ -25,4 +25,8 @@ public class ParkingBoy {
         .map(parkingLot -> parkingLot.park(car))
         .orElseThrow(NoAvailableParkingLotException::new);
   }
+
+  public Car pickUp(Receipt receipt) {
+    return parkingLots.get(0).pickUp(receipt);
+  }
 }
