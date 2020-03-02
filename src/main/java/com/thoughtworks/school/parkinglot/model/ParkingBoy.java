@@ -18,6 +18,10 @@ public class ParkingBoy {
   }
 
   public Receipt park(Car car) {
-    return parkingLots.get(0).park(car);
+    return parkingLots.stream()
+        .filter(ParkingLot::isAvailable)
+        .findFirst()
+        .map(parkingLot -> parkingLot.park(car))
+        .get();
   }
 }

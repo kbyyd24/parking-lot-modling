@@ -45,4 +45,23 @@ class ParkingBoyTest extends Specification {
     receipt.token != null
     receipt.car == car
   }
+
+  def "should park car at first available parking lot"() {
+    given:
+    def parkingBoy = new ParkingBoy()
+    def notAvailableParkingLot = new ParkingLot(1)
+    notAvailableParkingLot.park(new Car())
+    def firstAvailableParkingLot = new ParkingLot(2)
+    firstAvailableParkingLot.park(new Car())
+    def secondAvailableParkingLot = new ParkingLot(3)
+    [notAvailableParkingLot, firstAvailableParkingLot, secondAvailableParkingLot]
+      .forEach { parkingBoy.addNextParkingLot(it) }
+    def car = new Car()
+
+    when:
+    def receipt = parkingBoy.park(car)
+
+    then:
+    receipt.parkingLotId == firstAvailableParkingLot.id
+  }
 }
