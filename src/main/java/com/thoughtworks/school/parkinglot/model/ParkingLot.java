@@ -1,17 +1,12 @@
 package com.thoughtworks.school.parkinglot.model;
 
-import static java.util.Collections.emptySet;
-import static java.util.stream.Collectors.toSet;
-
 import com.thoughtworks.school.parkinglot.annotation.Entity;
 import com.thoughtworks.school.parkinglot.exception.InvalidReceiptException;
 import com.thoughtworks.school.parkinglot.exception.ParkingLotNotAvailableException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Stream;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -20,7 +15,6 @@ import lombok.Getter;
 public class ParkingLot {
   @Getter private String id;
   private int capacity;
-  private Collection<Receipt> validReceipts = emptySet();
   private Map<Receipt, Car> currentParkingCars = new HashMap<>();
 
   public ParkingLot(int capacity) {
@@ -33,16 +27,11 @@ public class ParkingLot {
       throw new ParkingLotNotAvailableException();
     }
     Receipt receipt = new Receipt(this.id, UUID.randomUUID().toString(), car);
-    validReceipts = Stream.concat(validReceipts.stream(), Stream.of(receipt)).collect(toSet());
     currentParkingCars.put(receipt, car);
     return receipt;
   }
 
   public Car pickUp(Receipt receipt) {
-    validReceipts =
-        validReceipts.stream()
-            .filter(validReceipt -> !receipt.equals(validReceipt))
-            .collect(toSet());
     return Optional.ofNullable(currentParkingCars.remove(receipt))
         .orElseThrow(InvalidReceiptException::new);
   }
