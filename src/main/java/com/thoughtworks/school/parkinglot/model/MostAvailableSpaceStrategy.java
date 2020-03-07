@@ -10,6 +10,7 @@ public class MostAvailableSpaceStrategy implements ParkingStrategy {
   public ParkingLot apply(List<ParkingLot> parkingLots) {
     return parkingLots
         .parallelStream()
+        .filter(ParkingLot::isAvailable)
         .max(comparing(ParkingLot::availableSpaceCount))
         .orElse(null);
   }

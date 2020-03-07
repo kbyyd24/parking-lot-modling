@@ -24,4 +24,12 @@ class MostAvailableSpaceStrategyTest extends Specification {
     then:
     parkingLot == null
   }
+
+  def "should return null when most available space parking lot is not available"() {
+    when:
+    def parkingLot = strategy.apply([new ParkingLot(0)])
+
+    then:
+    parkingLot == null
+  }
 }
