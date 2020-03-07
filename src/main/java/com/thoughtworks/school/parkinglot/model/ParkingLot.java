@@ -7,6 +7,8 @@ import com.thoughtworks.school.parkinglot.annotation.Entity;
 import com.thoughtworks.school.parkinglot.exception.InvalidReceiptException;
 import com.thoughtworks.school.parkinglot.exception.ParkingLotNotAvailableException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Stream;
 import lombok.EqualsAndHashCode;
@@ -18,6 +20,7 @@ public class ParkingLot {
   @Getter private String id;
   private int capacity;
   private Collection<Receipt> validReceipts = emptySet();
+  private Map<Receipt, Car> currentParkingCars = new HashMap<>();
 
   public ParkingLot(int capacity) {
     this.id = UUID.randomUUID().toString();
@@ -30,6 +33,7 @@ public class ParkingLot {
     }
     Receipt receipt = new Receipt(this.id, UUID.randomUUID().toString(), car);
     validReceipts = Stream.concat(validReceipts.stream(), Stream.of(receipt)).collect(toSet());
+    currentParkingCars.put(receipt, car);
     return receipt;
   }
 

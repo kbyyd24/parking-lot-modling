@@ -14,7 +14,7 @@ class ParkingBoy <<Entity>> {
 class ParkingLot <<Entity>> {
   - id: String
   - capacity: int
-  - carRecords: Map<Receipt, Car>
+  - currentParkingCars: Map<Receipt, Car>
   + park(Car): Receipt
   + pickUp(Receipt): Car
   + isAvailable(): Boolean
