@@ -5,7 +5,7 @@ image::https://github.com/kbyyd24/parking-lot-modling/workflows/parking-lot/badg
 
 == UML
 
-image::PlantUml-Layout.png[]
+image::PlantUml.png[]
 
 Plant UML code:
 

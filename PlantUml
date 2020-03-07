@@ -2,7 +2,7 @@
 
 class ParkingManager <<Entity>> {
   - parkingBoys: Collection<ParkingBoy>
-  + dispatchAParkingBoy(): ParkingBoy
+  + dispatchOneParkingBoy(): ParkingBoy
 }
 
 class ParkingBoy <<Entity>> {
