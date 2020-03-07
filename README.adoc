@@ -7,46 +7,9 @@ image::https://github.com/kbyyd24/parking-lot-modling/workflows/parking-lot/badg
 
 image::PlantUml-Layout.png[]
 
-[plantuml]
-----
-@startuml
+Plant UML code:
 
-class ParkingBoy <<Entity>> {
-  Receipt park(Car)
-  Car pickUp(Receipt)
-  void addNextParkingLot(ParkingLot)
-  void removeParkingLot(ParkingLot)
-}
-
-class ParkingLot <<Entity>> {
-  String id
-  int capacity
-  Receipt park(Car)
-  Car pickUp(Receipt)
-  Boolean isAvailable()
-}
-
-class Receipt <<Value Object>> {
-  String parkingLotId
-  String token
-}
-
-class Car <<Value Object>>
-
-ParkingLot "1" *--> "N" Receipt
-
-Receipt "1" -> "1" Car
-
-ParkingBoy "1" *--> "N" ParkingLot
-
-ParkingBoy ..> Receipt
-
-ParkingBoy ..> Car
-
-ParkingLot ..> Car
-
-@enduml
-----
+include::PlantUml[]
 
 == How to run
 

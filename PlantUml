@@ -1,37 +1,53 @@
 @startuml
 
+class ParkingManager <<Entity>> {
+  - parkingBoys: Collection<ParkingBoy>
+  + dispatchAParkingBoy(): ParkingBoy
+}
+
 class ParkingBoy <<Entity>> {
-  Receipt park(Car)
-  Car pickUp(Receipt)
-  void addNextParkingLot(ParkingLot)
-  void removeParkingLot(ParkingLot)
+  - parkingLots: List<ParkingLot>
+  - parkingStrategy: ParkingStrategy
+  + findAParkingLot(): ParkingLot
 }
 
 class ParkingLot <<Entity>> {
-  String id
-  int capacity
-  Receipt park(Car)
-  Car pickUp(Receipt)
-  Boolean isAvailable()
+  - id: String
+  - capacity: int
+  - carRecords: Map<Receipt, Car>
+  + park(Car): Receipt
+  + pickUp(Receipt): Car
+  + isAvailable(): Boolean
+  + availableSpaceCount(): int
 }
 
 class Receipt <<Value Object>> {
-  String parkingLotId
-  String token
+  - parkingLotId: String
+  - token: String
 }
 
 class Car <<Value Object>>
 
-ParkingLot "1" *--> "N" Receipt
+interface ParkingStrategy {
+  + apply(List<ParkingLot>): ParkingLot
+}
 
-Receipt "1" -> "1" Car
+class FirstAvailableStrategy
 
-ParkingBoy "1" *--> "N" ParkingLot
+class MaxAvailableSpaceStrategy
 
-ParkingBoy ..> Receipt
+ParkingBoy "N" o--> "N" ParkingLot
 
-ParkingBoy ..> Car
+ParkingBoy "1" -> "1" ParkingStrategy
 
-ParkingLot ..> Car
+ParkingLot "1" o--> "N" Receipt
+
+ParkingLot "1" o--> "N" Car
+
+ParkingStrategy <|.. FirstAvailableStrategy
+
+ParkingStrategy <|.. MaxAvailableSpaceStrategy
+
+ParkingManager "1" --> "N" ParkingBoy
 
 @enduml
