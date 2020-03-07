@@ -93,4 +93,16 @@ class ParkingLotTest extends Specification {
     then:
     !available
   }
+
+  def "should return available space count"() {
+    expect:
+    def parkingLot = new ParkingLot(capacity)
+    parkInCarNumber.times { parkingLot.park(new Car()) }
+    parkingLot.availableSpaceCount() == availableSpaceCount
+
+    where:
+    capacity | parkInCarNumber | availableSpaceCount
+    3        | 0               | 3
+    5        | 3               | 2
+  }
 }
