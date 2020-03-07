@@ -48,6 +48,7 @@ public class ParkingLot {
         validReceipts.stream()
             .filter(validReceipt -> !receipt.equals(validReceipt))
             .collect(toSet());
+    currentParkingCars.remove(receipt);
     return car;
   }
 
