@@ -1,7 +1,9 @@
 package com.thoughtworks.school.parkinglot.model;
 
 import com.thoughtworks.school.parkinglot.annotation.Entity;
+import com.thoughtworks.school.parkinglot.exception.NoAvailableParkingLotException;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class ParkingBoy {
@@ -15,6 +17,7 @@ public class ParkingBoy {
   }
 
   public ParkingLot findOneParkingLot() {
-    return strategy.apply(parkingLots);
+    return Optional.ofNullable(strategy.apply(parkingLots))
+        .orElseThrow(NoAvailableParkingLotException::new);
   }
 }
