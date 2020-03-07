@@ -57,6 +57,6 @@ public class ParkingLot {
   }
 
   public int availableSpaceCount() {
-    return capacity - validReceipts.size();
+    return capacity - currentParkingCars.size();
   }
 }
