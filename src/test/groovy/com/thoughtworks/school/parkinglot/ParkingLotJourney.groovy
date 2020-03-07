@@ -3,7 +3,7 @@ package com.thoughtworks.school.parkinglot
 import com.thoughtworks.school.parkinglot.model.*
 
 static def thereIsAParkingManager() {
-  def parkingLots = (1..10).collect({ new ParkingLot(10) })
+  def parkingLots = (1..10).collect({ new ParkingLot(it) })
   def parkingBoys = (1..2).collect({
     if (it == 1) {
       return new ParkingBoy((0..4).collect({ parkingLots[it] }), new FirstAvailableStrategy())

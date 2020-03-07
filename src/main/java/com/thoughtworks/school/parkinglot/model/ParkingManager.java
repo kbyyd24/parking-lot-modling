@@ -1,6 +1,8 @@
 package com.thoughtworks.school.parkinglot.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Random;
 
 public class ParkingManager {
 
@@ -11,6 +13,7 @@ public class ParkingManager {
   }
 
   public ParkingBoy dispatchOneParkingBoy() {
-    return parkingBoys.stream().findAny().orElse(null);
+    int index = Math.abs(new Random().nextInt()) % parkingBoys.size();
+    return new ArrayList<>(parkingBoys).get(index);
   }
 }
