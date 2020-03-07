@@ -1,6 +1,6 @@
 package com.thoughtworks.school.parkinglot.model
 
-import com.thoughtworks.school.parkinglot.exception.NoAvailableParkingLotException
+
 import spock.lang.Specification
 
 class FirstAvailableStrategyTest extends Specification {
@@ -17,11 +17,11 @@ class FirstAvailableStrategyTest extends Specification {
     [new ParkingLot(1), new ParkingLot(0)] | parkingLots.get(0)
   }
 
-  def "should throw exception when not found available parking lot"() {
+  def "should return null when not found available parking lot"() {
     when:
-    strategy.apply([new ParkingLot(0)])
+    def parkingLot = strategy.apply([new ParkingLot(0)])
 
     then:
-    thrown(NoAvailableParkingLotException.class)
+    parkingLot == null
   }
 }
