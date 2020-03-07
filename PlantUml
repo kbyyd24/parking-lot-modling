@@ -34,7 +34,7 @@ interface ParkingStrategy {
 
 class FirstAvailableStrategy
 
-class MaxAvailableSpaceStrategy
+class MostAvailableSpaceStrategy
 
 ParkingBoy "N" o--> "N" ParkingLot
 
@@ -46,7 +46,7 @@ ParkingLot "1" o--> "N" Car
 
 ParkingStrategy <|.. FirstAvailableStrategy
 
-ParkingStrategy <|.. MaxAvailableSpaceStrategy
+ParkingStrategy <|.. MostAvailableSpaceStrategy
 
 ParkingManager "1" --> "N" ParkingBoy
 
