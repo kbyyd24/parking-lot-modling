@@ -16,7 +16,7 @@ class ParkingLotTest extends Specification {
 
     then:
     receipt.parkingLotId == parkingLot.id
-    receipt.car == car
+    receipt.token != null
   }
 
   def 'should throw exception when the parking lot is not available'() {
@@ -49,7 +49,7 @@ class ParkingLotTest extends Specification {
     def parkingLot = new ParkingLot(2)
     def car = new Car()
     parkingLot.park(car)
-    def invalidReceipt = new Receipt(parkingLot.id, null, car)
+    def invalidReceipt = new Receipt(parkingLot.id, null)
 
     when:
     parkingLot.pickUp(invalidReceipt)

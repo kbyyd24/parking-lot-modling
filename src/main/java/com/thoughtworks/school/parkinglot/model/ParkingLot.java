@@ -26,7 +26,7 @@ public class ParkingLot {
     if (!this.isAvailable()) {
       throw new ParkingLotNotAvailableException();
     }
-    Receipt receipt = new Receipt(this.id, UUID.randomUUID().toString(), car);
+    Receipt receipt = new Receipt(this.id, UUID.randomUUID().toString());
     currentParkingCars.put(receipt, car);
     return receipt;
   }

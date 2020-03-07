@@ -6,7 +6,6 @@ import lombok.Value;
 @ValueObject
 @Value
 public class Receipt {
-  private String parkingLotId;
-  private String token;
-  private Car car;
+  String parkingLotId;
+  String token;
 }
