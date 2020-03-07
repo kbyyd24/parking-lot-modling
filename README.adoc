@@ -2,7 +2,6 @@
 
 image::https://github.com/kbyyd24/parking-lot-modling/workflows/parking-lot/badge.svg[link="https://github.com/kbyyd24/parking-lot-modling/actions"]
 
-
 == UML
 
 image::PlantUml.png[]
@@ -18,4 +17,11 @@ Use cases are written as test cases, run gradle test can see the result:
 [shell]
 ----
 > gradle test
+----
+
+Also, added a groovy script to run the user journey, you can run the script:
+
+[shell]
+----
+> gradle runJourney
 ----
