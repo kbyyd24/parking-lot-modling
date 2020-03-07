@@ -9,6 +9,7 @@ import com.thoughtworks.school.parkinglot.exception.ParkingLotNotAvailableExcept
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Stream;
 import lombok.EqualsAndHashCode;
@@ -38,18 +39,12 @@ public class ParkingLot {
   }
 
   public Car pickUp(Receipt receipt) {
-    Car car =
-        validReceipts.stream()
-            .filter(receipt::equals)
-            .findFirst()
-            .map(Receipt::getCar)
-            .orElseThrow(InvalidReceiptException::new);
     validReceipts =
         validReceipts.stream()
             .filter(validReceipt -> !receipt.equals(validReceipt))
             .collect(toSet());
-    currentParkingCars.remove(receipt);
-    return car;
+    return Optional.ofNullable(currentParkingCars.remove(receipt))
+        .orElseThrow(InvalidReceiptException::new);
   }
 
   public Boolean isAvailable() {
