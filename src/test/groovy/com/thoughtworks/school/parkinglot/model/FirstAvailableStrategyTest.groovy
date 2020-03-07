@@ -6,7 +6,7 @@ import spock.lang.Specification
 class FirstAvailableStrategyTest extends Specification {
   private FirstAvailableStrategy strategy = new FirstAvailableStrategy()
 
-  def "should_return_first_available_parking_lot"() {
+  def "should return first available parking lot"() {
     expect:
     strategy.apply(parkingLots) == expectedParkingLot
 
@@ -17,7 +17,7 @@ class FirstAvailableStrategyTest extends Specification {
     [new ParkingLot(1), new ParkingLot(0)] | parkingLots.get(0)
   }
 
-  def "should_throw_exception_when_not_found_available_parking_lot"() {
+  def "should throw exception when not found available parking lot"() {
     when:
     strategy.apply([new ParkingLot(0)])
 
