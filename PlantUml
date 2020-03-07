@@ -8,7 +8,7 @@ class ParkingManager <<Entity>> {
 class ParkingBoy <<Entity>> {
   - parkingLots: List<ParkingLot>
   - parkingStrategy: ParkingStrategy
-  + findAParkingLot(): ParkingLot
+  + findOneParkingLot(): ParkingLot
 }
 
 class ParkingLot <<Entity>> {
