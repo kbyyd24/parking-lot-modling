@@ -1,0 +1,27 @@
+@startuml
+
+actor User
+User -> ParkingManagerApplicationService : hasAvailableParkingLot
+activate ParkingManagerApplicationService
+
+ParkingManagerApplicationService -> ParkingManagerRepository : find
+activate ParkingManagerRepository
+return ParkingManager
+deactivate ParkingManagerRepository
+
+ParkingManagerApplicationService -> ParkingManager: hasAvailableParkingLot
+activate ParkingManager
+
+loop for every ParkingBoy
+ParkingManager -> ParkingBoy : findOneParkingLot
+activate ParkingBoy
+return available ParkingLot
+deactivate ParkingBoy
+end
+
+ParkingManagerApplicationService <-- ParkingManager: true or false
+deactivate ParkingManager
+
+User <-- ParkingManagerApplicationService: true or false
+deactivate ParkingManagerApplicationService
+@enduml

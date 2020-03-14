@@ -1,0 +1,34 @@
+@startuml
+
+actor User
+
+User -> ParkingBoyApplicationService: park
+activate ParkingBoyApplicationService
+
+ParkingBoyApplicationService -> ParkingBoyRepository : findById
+activate ParkingBoyRepository
+return ParkingBoy
+deactivate ParkingBoyRepository
+
+ParkingBoyApplicationService -> ParkingBoyParkService : park
+activate ParkingBoyParkService
+ParkingBoyParkService -> ParkingBoy : findOneParkingLot
+activate ParkingBoy
+return ParkingLot
+deactivate ParkingBoy
+ParkingBoyParkService -> ParkingLot : park
+activate ParkingLot
+return Receipt
+deactivate ParkingLot
+ParkingBoyApplicationService <-- ParkingBoyParkService : Receipt
+deactivate ParkingBoyParkService
+
+ParkingBoyApplicationService -> ParkingBoyRepository: save
+activate ParkingBoyRepository
+ParkingBoyApplicationService <-- ParkingBoyRepository
+deactivate ParkingBoyRepository
+
+User <-- ParkingBoyApplicationService: Receipt
+deactivate ParkingBoyApplicationService
+
+@enduml

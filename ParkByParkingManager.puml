@@ -1,0 +1,38 @@
+@startuml
+
+actor User
+
+User -> ParkingManagerApplicationService : park
+activate ParkingManagerApplicationService
+
+ParkingManagerApplicationService -> ParkingManagerRepository : find
+activate ParkingManagerRepository
+return ParkingManager
+deactivate ParkingManagerRepository
+
+ParkingManagerApplicationService -> ParkingManagerParkService : park
+activate ParkingManagerParkService
+ParkingManagerParkService -> ParkingManager : dispatchOneParkingBoy
+activate ParkingManager
+return ParkingBoy
+deactivate ParkingManager
+ParkingManagerParkService -> ParkingBoy : findOneParkingLot
+activate ParkingBoy
+return ParkingLot
+deactivate ParkingBoy
+ParkingManagerParkService -> ParkingLot : park
+activate ParkingLot
+return Receipt
+deactivate ParkingLot
+ParkingManagerApplicationService <-- ParkingManagerParkService : Receipt
+deactivate ParkingManagerParkService
+
+ParkingManagerApplicationService -> ParkingManagerRepository: save
+activate ParkingManagerRepository
+ParkingManagerApplicationService <-- ParkingManagerRepository
+deactivate ParkingManagerRepository
+
+User <-- ParkingManagerApplicationService : Receipt
+deactivate ParkingManagerApplicationService
+
+@enduml

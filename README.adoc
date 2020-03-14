@@ -8,7 +8,7 @@ image::PlantUml.png[]
 
 Plant UML code:
 
-include::PlantUml[]
+include::UML.puml[]
 
 == How to run
 
