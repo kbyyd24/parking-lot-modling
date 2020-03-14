@@ -20,7 +20,7 @@ Also, added a groovy script to run the user journey, you can run the script:
 
 == UML
 
-image::Uml.png[]
+image::UML.png[]
 
 UML code:
 
