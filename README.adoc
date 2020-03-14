@@ -2,14 +2,6 @@
 
 image::https://github.com/kbyyd24/parking-lot-modling/workflows/parking-lot/badge.svg[link="https://github.com/kbyyd24/parking-lot-modling/actions"]
 
-== UML
-
-image::PlantUml.png[]
-
-Plant UML code:
-
-include::UML.puml[]
-
 == How to run
 
 Use cases are written as test cases, run gradle test can see the result:
@@ -25,3 +17,39 @@ Also, added a groovy script to run the user journey, you can run the script:
 ----
 > gradle runJourney
 ----
+
+== UML
+
+image::Uml.png[]
+
+UML code:
+
+//include::UML.puml[]
+
+== Sequence Diagrams
+
+Only for application service
+
+=== ParkingBoyApplicationService.park
+
+image::ParkingBoyApplicationService_park.png[]
+
+UML code:
+
+include::ParkingBoyApplicationService.park.puml[]
+
+=== ParkingManagerApplicationService.park
+
+image::ParkingManagerApplicationService_park.png[]
+
+UML code:
+
+include::ParkingManagerApplicationService.park.puml[]
+
+=== ParkingManagerApplicationService.hasAvailableParkingLot
+
+image::ParkingManagerApplicationService_hasAvailableParkingLot.png[]
+
+UML code:
+
+include::ParkingManagerApplicationService.hasAvailableParkingLot.puml[]
