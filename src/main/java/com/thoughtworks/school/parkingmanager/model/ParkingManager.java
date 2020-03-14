@@ -1,8 +1,10 @@
 package com.thoughtworks.school.parkingmanager.model;
 
+import com.thoughtworks.school.exception.NoAvailableParkingLotException;
 import com.thoughtworks.school.parkingboy.model.ParkingBoy;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Random;
 
 public class ParkingManager {
@@ -19,6 +21,15 @@ public class ParkingManager {
   }
 
   public boolean hasAvailableParkingLot() {
-    return false;
+    return parkingBoys.stream()
+        .map(
+            parkingBoy -> {
+              try {
+                return parkingBoy.findOneParkingLot();
+              } catch (NoAvailableParkingLotException ignore) {
+                return null;
+              }
+            })
+        .anyMatch(Objects::nonNull);
   }
 }
