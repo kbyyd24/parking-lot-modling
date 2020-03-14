@@ -50,4 +50,49 @@ ParkingStrategy <|.. MostAvailableSpaceStrategy
 
 ParkingManager "1" --> "N" ParkingBoy
 
+class ParkingBoyApplicationService <<Application Service>> {
++ park(String parkingBoyId, Car car): Receipt
+}
+
+class ParkingBoyParkService <<Domain Service>> {
++ park(ParkingBoy, Car): Receipt
+}
+
+interface ParkingBoyRepository <<Repository>> {
++ findById(String): ParkingBoy
++ save(ParkingBoy)
+}
+
+ParkingBoyApplicationService --> ParkingBoyParkService
+ParkingBoyApplicationService --> ParkingBoyRepository
+ParkingBoyApplicationService --> ParkingBoy
+
+class ParkingManagerApplicationService <<Application Service>> {
++ park(Car): Receipt
++ hasAvailableParkingLot(): boolean
+}
+
+class ParkingManagerParkService <<Domain Service>> {
++ park(ParkingManager, Car): Receipt
+}
+
+interface ParkingManagerRepository <<Repository>> {
++ find(): ParkingManager
++ save(ParkingManager)
+}
+
+ParkingManagerApplicationService --> ParkingManagerParkService
+ParkingManagerApplicationService --> ParkingManagerRepository
+ParkingManagerApplicationService --> ParkingManager
+
+
+
+
 @enduml
+
+ParkingBoyParkService ..> ParkingBoy
+ParkingBoyParkService ..> Car
+ParkingBoyParkService ..> Receipt
+ParkingBoyApplicationService ..> ParkingBoy
+ParkingBoyApplicationService ..> Car
+ParkingBoyApplicationService ..> Receipt
