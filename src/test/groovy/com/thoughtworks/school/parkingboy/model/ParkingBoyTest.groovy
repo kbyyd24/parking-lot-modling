@@ -1,6 +1,7 @@
-package com.thoughtworks.school.parkinglot.model
+package com.thoughtworks.school.parkingboy.model
 
-import com.thoughtworks.school.parkinglot.exception.NoAvailableParkingLotException
+import com.thoughtworks.school.exception.NoAvailableParkingLotException
+import com.thoughtworks.school.parkinglot.model.ParkingLot
 import spock.lang.Specification
 
 class ParkingBoyTest extends Specification {

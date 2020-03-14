@@ -1,7 +1,8 @@
-package com.thoughtworks.school.parkinglot.model;
+package com.thoughtworks.school.parkingboy.model;
 
-import com.thoughtworks.school.parkinglot.annotation.Entity;
-import com.thoughtworks.school.parkinglot.exception.NoAvailableParkingLotException;
+import com.thoughtworks.school.annotation.Entity;
+import com.thoughtworks.school.exception.NoAvailableParkingLotException;
+import com.thoughtworks.school.parkinglot.model.ParkingLot;
 import java.util.List;
 import java.util.Optional;
 

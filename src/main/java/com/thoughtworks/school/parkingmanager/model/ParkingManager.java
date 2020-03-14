@@ -1,5 +1,6 @@
-package com.thoughtworks.school.parkinglot.model;
+package com.thoughtworks.school.parkingmanager.model;
 
+import com.thoughtworks.school.parkingboy.model.ParkingBoy;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;

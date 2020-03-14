@@ -1,6 +1,6 @@
 package com.thoughtworks.school.parkinglot.model;
 
-import com.thoughtworks.school.parkinglot.annotation.ValueObject;
+import com.thoughtworks.school.annotation.ValueObject;
 import lombok.Value;
 
 @ValueObject

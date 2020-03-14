@@ -1,5 +1,6 @@
-package com.thoughtworks.school.parkinglot.model;
+package com.thoughtworks.school.parkingboy.model;
 
+import com.thoughtworks.school.parkinglot.model.ParkingLot;
 import java.util.List;
 
 public class FirstAvailableStrategy implements ParkingStrategy {

@@ -1,8 +1,8 @@
 package com.thoughtworks.school.parkinglot.model;
 
-import com.thoughtworks.school.parkinglot.annotation.Entity;
-import com.thoughtworks.school.parkinglot.exception.InvalidReceiptException;
-import com.thoughtworks.school.parkinglot.exception.ParkingLotNotAvailableException;
+import com.thoughtworks.school.annotation.Entity;
+import com.thoughtworks.school.exception.InvalidReceiptException;
+import com.thoughtworks.school.exception.ParkingLotNotAvailableException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
