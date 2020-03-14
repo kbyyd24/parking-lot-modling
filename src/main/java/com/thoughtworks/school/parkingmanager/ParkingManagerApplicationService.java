@@ -20,4 +20,9 @@ public class ParkingManagerApplicationService {
     parkingManagerRepository.save(parkingManager);
     return receipt;
   }
+
+  public boolean hasAvailableParkingLot() {
+    ParkingManager parkingManager = parkingManagerRepository.find();
+    return parkingManager.hasAvailableParkingLot();
+  }
 }

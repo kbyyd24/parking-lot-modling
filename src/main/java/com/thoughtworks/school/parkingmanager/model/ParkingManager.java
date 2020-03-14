@@ -17,4 +17,8 @@ public class ParkingManager {
     int index = Math.abs(new Random().nextInt()) % parkingBoys.size();
     return new ArrayList<>(parkingBoys).get(index);
   }
+
+  public boolean hasAvailableParkingLot() {
+    return false;
+  }
 }
