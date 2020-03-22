@@ -1,5 +1,6 @@
 package com.thoughtworks.school.domain.parkinglot.policy;
 
+import com.thoughtworks.school.domain.parkinglot.finder.ParkingStrategy;
 import com.thoughtworks.school.domain.parkinglot.parking.ParkingLot;
 import java.util.List;
 

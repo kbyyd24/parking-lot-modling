@@ -3,7 +3,6 @@ package com.thoughtworks.school.domain.parkinglot.finder
 import com.thoughtworks.school.domain.parkinglot.exception.NoAvailableParkingLotException
 import com.thoughtworks.school.domain.parkinglot.parking.ParkingLot
 import com.thoughtworks.school.domain.parkinglot.policy.FirstAvailableStrategy
-import com.thoughtworks.school.domain.parkinglot.policy.ParkingStrategy
 import spock.lang.Specification
 
 class ParkingBoyTest extends Specification {

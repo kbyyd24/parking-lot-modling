@@ -2,9 +2,8 @@ package com.thoughtworks.school.domain.parkinglot.finder;
 
 import com.thoughtworks.school.annotation.ValueObject;
 import com.thoughtworks.school.domain.parkinglot.exception.NoAvailableParkingLotException;
-import com.thoughtworks.school.domain.parkinglot.parking.ParkingLotFinder;
-import com.thoughtworks.school.domain.parkinglot.policy.ParkingStrategy;
 import com.thoughtworks.school.domain.parkinglot.parking.ParkingLot;
+import com.thoughtworks.school.domain.parkinglot.parking.ParkingLotFinder;
 import java.util.List;
 import java.util.Optional;
 
