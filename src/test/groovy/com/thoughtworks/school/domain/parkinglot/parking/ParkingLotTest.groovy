@@ -1,7 +1,7 @@
-package com.thoughtworks.school.parkinglot.model
+package com.thoughtworks.school.domain.parkinglot.parking
 
-import com.thoughtworks.school.exception.InvalidReceiptException
-import com.thoughtworks.school.exception.ParkingLotNotAvailableException
+import com.thoughtworks.school.domain.parkinglot.exception.InvalidReceiptException
+import com.thoughtworks.school.domain.parkinglot.exception.ParkingLotNotAvailableException
 import spock.lang.Specification
 
 class ParkingLotTest extends Specification {

@@ -1,4 +1,4 @@
-package com.thoughtworks.school.parkinglot.model;
+package com.thoughtworks.school.domain.parkinglot.parking;
 
 import com.thoughtworks.school.annotation.ValueObject;
 import lombok.Value;

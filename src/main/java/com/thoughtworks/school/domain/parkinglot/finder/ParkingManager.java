@@ -1,7 +1,6 @@
-package com.thoughtworks.school.parkingmanager.model;
+package com.thoughtworks.school.domain.parkinglot.finder;
 
-import com.thoughtworks.school.exception.NoAvailableParkingLotException;
-import com.thoughtworks.school.parkingboy.model.ParkingBoy;
+import com.thoughtworks.school.domain.parkinglot.exception.NoAvailableParkingLotException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;

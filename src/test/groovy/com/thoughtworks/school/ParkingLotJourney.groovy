@@ -1,11 +1,11 @@
 package com.thoughtworks.school
 
-import com.thoughtworks.school.parkingboy.model.FirstAvailableStrategy
-import com.thoughtworks.school.parkingboy.model.MostAvailableSpaceStrategy
-import com.thoughtworks.school.parkingboy.model.ParkingBoy
-import com.thoughtworks.school.parkinglot.model.Car
-import com.thoughtworks.school.parkinglot.model.ParkingLot
-import com.thoughtworks.school.parkingmanager.model.ParkingManager
+import com.thoughtworks.school.domain.parkinglot.policy.FirstAvailableStrategy
+import com.thoughtworks.school.domain.parkinglot.policy.MostAvailableSpaceStrategy
+import com.thoughtworks.school.domain.parkinglot.finder.ParkingBoy
+import com.thoughtworks.school.domain.parkinglot.parking.Car
+import com.thoughtworks.school.domain.parkinglot.parking.ParkingLot
+import com.thoughtworks.school.domain.parkinglot.finder.ParkingManager
 
 static def thereIsAParkingManager() {
   def parkingLots = (1..10).collect({ new ParkingLot(it) })

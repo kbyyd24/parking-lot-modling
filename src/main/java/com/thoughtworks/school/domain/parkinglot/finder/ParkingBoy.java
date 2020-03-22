@@ -1,12 +1,13 @@
-package com.thoughtworks.school.parkingboy.model;
+package com.thoughtworks.school.domain.parkinglot.finder;
 
-import com.thoughtworks.school.annotation.Entity;
-import com.thoughtworks.school.exception.NoAvailableParkingLotException;
-import com.thoughtworks.school.parkinglot.model.ParkingLot;
+import com.thoughtworks.school.annotation.ValueObject;
+import com.thoughtworks.school.domain.parkinglot.exception.NoAvailableParkingLotException;
+import com.thoughtworks.school.domain.parkinglot.policy.ParkingStrategy;
+import com.thoughtworks.school.domain.parkinglot.parking.ParkingLot;
 import java.util.List;
 import java.util.Optional;
 
-@Entity
+@ValueObject
 public class ParkingBoy {
 
   private List<ParkingLot> parkingLots;
